@@ -75,8 +75,43 @@ class Node {
     }
   }
   const list = new LinkedList();
+    
+  get(index){
+    if(index < 0 || index >= this.length){
+        return null;
+    }
+    let counter = 0;
+    let current = this.head;
+    while(counter !== index){
+        current = current.next;
+        counter++;
+    }
+    return current;
+}
+    set(index, val) {
+    var Node = this.get(index);
+    if (Node) {
+      Node.val = val;
+      return true;
+    }
+    return false;
+}
 
-  list.push(10);
+insert(index, val) {
+    if (index < 0 || index > this.length) return false;
+    if (index === this.length) return !!this.push(val);
+    if (index === 0) return !!this.unshift(val);
+    var newNode = new Node(val);
+    var prev = this.get(index - 1);
+    var temp = prev.next;
+    prev.next = newNode;
+    newNode.next = temp;
+    this.length++;
+    return true;
+}
+
+
+list.push(10);
   list.push(20);
   list.push(30);
   
@@ -85,4 +120,4 @@ class Node {
   list.unshift(5);
   
   console.log(list.shift()); // Output: 5
-  
+  console.log(list.get()); // Output:
