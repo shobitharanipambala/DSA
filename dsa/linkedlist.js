@@ -73,8 +73,8 @@ class Node {
         this.head = newNode;
       }
     }
-  }
-  const list = new LinkedList();
+  
+  // const list = new LinkedList();
     
   get(index){
     if(index < 0 || index >= this.length){
@@ -110,8 +110,80 @@ insert(index, val) {
     return true;
 }
 
+reversed(head){
 
-list.push(10);
+  let prev = null;
+  let current = head ;
+  while (current){
+    const nextNode = current.next;
+    current.next = prev;
+    current =nextNode ;
+  }
+  return prev;
+
+
+
+}
+
+}
+
+// reversel (9th june)
+// Initially, the reverse_recur() method is called.
+
+// The head and tail pointers are swapped. Now, this. head points to the last node (400), and this.tail points to the first node (100).
+
+// The recursive helper function reverseHelper() is defined.
+
+//  The reverseHelper() function is called with current as the node 9 next to the new head (201) and prev as the new head (400).
+
+// Inside reverseHelper(), it checks if current is null. Since it's not, it proceeds to the else block. The next variable is assigned the value of current.next, which is the
+
+// next node after 201 (300). The current.next pointer is reversed by assigning it to prev, so now,
+
+// the node 201 points to the previous node 400. The reverseHelper() function is called recursively with next as
+//  the current node (300) and current as the previous node (201).))
+// The call to reverseHelper() is added to the top of the call stack.
+
+function reverse(node){
+  if(node == null )return null;
+
+  if(node.next == null){
+    head = node ;
+    return node;
+  }
+  
+  let nodel =  reverse(node.next);
+  nodel.next = node;
+  return node;
+
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  list.push(10);
   list.push(20);
   list.push(30);
   
